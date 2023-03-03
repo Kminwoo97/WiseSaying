@@ -1,4 +1,4 @@
-package org.example;
+package org.example.wisesaying.entity;
 
 public class WiseSaying {
     private long id;

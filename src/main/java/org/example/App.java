@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.system.controller.SystemController;
+import org.example.wisesaying.controller.WiseSayingController;
+import org.example.wisesaying.entity.WiseSaying;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,31 +19,20 @@ public class App {
     public void run() {
         System.out.println("== 명언 앱 ==");
 
-        long lastWiseSayingId = 0L;
-        List<WiseSaying> wiseSayingList = new ArrayList<>();
+        WiseSayingController wiseSayingController = new WiseSayingController(sc);
+        SystemController systemController = new SystemController();
+
 
         while(true){
             System.out.print("명령) ");
             String command = sc.nextLine().trim();
             if (command.equals("종료")) {
+                SystemController.exit();
                 break;
             } else if (command.equals("등록")) {
-                System.out.print("명언: ");
-                String content = sc.nextLine().trim();
-                System.out.print("작가: ");
-                String authorName = sc.nextLine().trim();
-                System.out.println(++lastWiseSayingId + "번 명언이 등록되었습니다.");
-
-                wiseSayingList.add(new WiseSaying(lastWiseSayingId, content, authorName));
+                wiseSayingController.write();
             } else if (command.equals("목록")) {
-                System.out.println("번호 / 작가 / 명언");
-                System.out.println("===================");
-
-
-                for (int i = wiseSayingList.size() - 1; i >= 0; i--) {
-                    WiseSaying wiseSaying = wiseSayingList.get(i);
-                    System.out.println(wiseSaying.getId() + " / " + wiseSaying.getAuthorName() + " / " + wiseSaying.getContent());
-                }
+                wiseSayingController.list();
             }
         }
     }
