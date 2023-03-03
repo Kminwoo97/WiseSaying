@@ -42,6 +42,18 @@ public class WiseSayingController {
             System.out.println("id(정수)를 입력해주세요.");
             return;
         }
+
+        //id와 일치하는 명언객체 찾기
+        WiseSaying wiseSaying = findById(id);
+        wiseSayingList.remove(wiseSaying);
         System.out.println(id+"번 명언이 삭제되었습니다.");
+    }
+
+    public WiseSaying findById(Long id){
+        for (WiseSaying wiseSaying : wiseSayingList) {
+            if(wiseSaying.getId() == id)
+                return wiseSaying;
+        }
+        return null;
     }
 }
