@@ -20,17 +20,20 @@ public class App {
         WiseSayingController wiseSayingController = new WiseSayingController();
         SystemController systemController = new SystemController();
 
-
         while(true){
             System.out.print("명령) ");
             String command = Container.getScanner().nextLine().trim();
-            if (command.equals("종료")) {
+            Rq rq = new Rq(command);
+
+            if (rq.getActionCode().equals("종료")) {
                 SystemController.exit();
                 break;
-            } else if (command.equals("등록")) {
+            } else if (rq.getActionCode().equals("등록")) {
                 wiseSayingController.write();
-            } else if (command.equals("목록")) {
+            } else if (rq.getActionCode().equals("목록")) {
                 wiseSayingController.list();
+            } else if (rq.getActionCode().equals("삭제")) {
+                wiseSayingController.remove(rq);
             }
         }
     }

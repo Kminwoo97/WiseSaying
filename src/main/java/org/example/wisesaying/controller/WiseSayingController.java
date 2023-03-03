@@ -1,6 +1,7 @@
 package org.example.wisesaying.controller;
 
 import org.example.Container;
+import org.example.Rq;
 import org.example.wisesaying.entity.WiseSaying;
 
 import java.util.ArrayList;
@@ -33,5 +34,18 @@ public class WiseSayingController {
             WiseSaying wiseSaying = wiseSayingList.get(i);
             System.out.println(wiseSaying.getId() + " / " + wiseSaying.getAuthorName() + " / " + wiseSaying.getContent());
         }
+    }
+
+    public void remove(Rq rq) {
+        long id = -1L;
+
+        try{
+            id = Long.parseLong(rq.getParams("id"));
+        }catch (NumberFormatException e){
+            System.out.println("id(정수)를 입력해주세요.");
+            return;
+        }
+
+        System.out.println(id+"번 명언이 삭제되었습니다.");
     }
 }
