@@ -45,6 +45,10 @@ public class WiseSayingController {
 
         //id와 일치하는 명언객체 찾기
         WiseSaying wiseSaying = findById(id);
+        if (wiseSaying == null) {
+            System.out.println(id + "번 명언은 존재하지 않습니다");
+            return;
+        }
         wiseSayingList.remove(wiseSaying);
         System.out.println(id+"번 명언이 삭제되었습니다.");
     }
