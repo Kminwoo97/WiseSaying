@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        //가독성을 위해서 이렇게 만들었다.
+        Container.init(); //-> static으로 Scanner자동으로 만들어진다.
 
-        new App(sc).run();
+        new App().run();
 
+        //Scanner 종료
+        Container.getScanner().close();;
     }
 }
