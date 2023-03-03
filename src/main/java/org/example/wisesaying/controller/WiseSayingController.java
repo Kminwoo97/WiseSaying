@@ -37,15 +37,11 @@ public class WiseSayingController {
     }
 
     public void remove(Rq rq) {
-        long id = -1L;
-
-        try{
-            id = Long.parseLong(rq.getParams("id"));
-        }catch (NumberFormatException e){
+        long id = rq.getLongParam("id", -1);
+        if (id == -1L) {
             System.out.println("id(정수)를 입력해주세요.");
             return;
         }
-
         System.out.println(id+"번 명언이 삭제되었습니다.");
     }
 }

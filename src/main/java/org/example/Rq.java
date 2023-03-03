@@ -46,4 +46,13 @@ public class Rq {
     public String getParams(String name) {
         return params.get(name);
     }
+
+    public long getLongParam(String name, long defaultValue) {
+        try{
+            return Long.parseLong(getParams("id"));
+        }catch (NumberFormatException e){
+        }
+
+        return defaultValue;
+    }
 }
