@@ -113,3 +113,11 @@
 2 / 홍길동 / 현재와 자신을 사랑하라.
 명령) 종료
 ```
+
+## Class 파일
+![image](https://user-images.githubusercontent.com/92236489/222721855-dab0e08b-20cc-45ae-ab16-eb62bc4d016c.png)
+* Main.java : main() 함수 실행
+* Container.java : Scanner를 여러 곳에서 사용하기 떄문에 하나의 class파일로 빼서 공유해서 사용하기 위해서 만들었다.
+* Rq.java : 명령으로 입력받는 등록, 목록, 수정, 수정?id=1, 삭제, 삭제?id=2 이러한 것을 명령과 파라미터로 분리하기 위해서 만들었다.
+* WiseSaying.java : 명언을 담을 객체 클래스
+* WiseSaying.Controller : App.java에서 if-else문안에 로직을 모두 작성했었는데 한곳에 로직을 담아두는 것은 좋지않아, 따로 빼서 기능(등록, 목록, 수정, 삭제)을 만들기위해서 만들었다.
